@@ -2,6 +2,9 @@ using PlanoContas.Application.Serviços;
 using PlanoContas.Domain.IServicos;
 using PlanoContas.Infraestructure;
 using PlanoContas.Infraestructure.Ioc;
+using Microsoft.EntityFrameworkCore;
+using PlanoContas.Domain.IRepositorios;
+using PlanoContas.Infraestructure.Repositorios;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,7 +15,12 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddScoped<ILancamentos, Lancamentos>();
+builder.Services.AddScoped<IServicoLancamento, ServicoLancamentos>();
+builder.Services.AddScoped<ILancamentoRepositorio, LancamentoRepositorio>();
+
+
+///Conexão com banco
+builder.Services.AddDbContext<LancamentoContexto>(opt => opt.UseInMemoryDatabase("Lancamentos"));
 
 var app = builder.Build();
 

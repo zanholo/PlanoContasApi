@@ -8,11 +8,11 @@
 
   <ItemGroup>
     <Folder Include="Modelo\" />
-    <Folder Include="DTO\" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Ninject" Version="3.3.6" />
+    <PackageReference Include="EntityFramework" Version="6.4.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="7.0.1" />
   </ItemGroup>
 
 </Project>

@@ -15,7 +15,7 @@ namespace PlanoContas.Infraestructure.Ioc
         {
 
             ///Servico
-            services = services.AddScoped<ILancamentos, Lancamentos>();
+            services = services.AddScoped<IServicoLancamento, ServicoLancamentos>();
             ///Repositorio
             ///
             return services;
