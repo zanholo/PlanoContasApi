@@ -62,10 +62,28 @@ namespace PlanoContas.Controllers
             subLancamentoDTO.Descricao = subLancamentoInputDTO.Descricao;
             subLancamentoDTO.AceitaLancamentos = subLancamentoInputDTO.AceitaLancamentos;
             subLancamentoDTO.Tipo = subLancamentoInputDTO.Tipo;
+            subLancamentoDTO.IdContaPai = subLancamentoInputDTO.IdContaPai;
+            subLancamentoDTO.Codigo = subLancamentoDTO.Codigo;
 
             var result = lancamentos.inserirsubLancamento(subLancamentoDTO);
 
             return Ok("Inclusão com sucesso.");
+        }
+
+
+        /**
+         * Retornar Proximo Codigo disponível para o Lancamento
+         */
+        [Route("RetornarProximoCodigo")]
+        [HttpPost]
+        public ActionResult<string> ListarProximoCodigoFilhoPor(int idContaPai)
+        {
+            var result = lancamentos.buscarProximoSequencial(idContaPai);
+
+            if (result.ToString() == "")
+                return Ok("Não foram encontrados Lancamentos para esse pai.");
+
+            return Ok(result);
         }
     }
 }

@@ -19,6 +19,16 @@ namespace PlanoContas.Domain.DTO
         public Int16 Tipo { get; set; }
 
         /// <summary>
+        /// Id Conta Pai
+        /// </summary>
+        public int IdContaPai { get; set; }
+
+        /// <summary>
+        /// Aceita SubLancamentos
+        /// </summary>
+        public string Codigo { get; set; }
+
+        /// <summary>
         /// Aceita SubLancamentos
         /// </summary>
         public bool AceitaLancamentos { get; set; }
@@ -37,6 +47,16 @@ namespace PlanoContas.Domain.DTO
         /// Tipo Conta
         /// </summary>
         public Int16 Tipo { get; set; }
+
+        /// <summary>
+        /// Id Conta Pai
+        /// </summary>
+        public int IdContaPai { get; set; }
+
+        /// <summary>
+        /// Aceita SubLancamentos
+        /// </summary>
+        public string Codigo { get; set; }
 
         /// <summary>
         /// Aceita SubLancamentos

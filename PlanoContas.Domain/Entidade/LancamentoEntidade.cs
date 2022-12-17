@@ -13,6 +13,7 @@ namespace PlanoContas.Domain.Entidade
         public string? Descricao { get; set; }
         public string? Codigo { get; set; }
         public Int16 Tipo { get; set; }
+        public int IdPai { get; set; }
         public bool AceitaLancamentos{ get; set; }
     }
 }

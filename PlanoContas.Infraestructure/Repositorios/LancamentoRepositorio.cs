@@ -25,8 +25,8 @@ namespace PlanoContas.Infraestructure.Repositorios
 
             if (id == 0)
                 listLancamentos = _context.TodosLancamentos.ToList();
-            //else
-                //listLancamentos = _context.Find(  id).ToList();
+            else
+                listLancamentos = _context.TodosLancamentos.Where(x => x.Tipo == id).ToList();
 
             return listLancamentos;
         }
@@ -36,7 +36,7 @@ namespace PlanoContas.Infraestructure.Repositorios
             LancamentoEntidade lancamentoEntidade = new LancamentoEntidade();
             lancamentoEntidade.Descricao = lancamento.Descricao;
             lancamentoEntidade.AceitaLancamentos = lancamento.AceitaLancamentos;
-            //lancamentoEntidade.Codigo = lancamento.Codigo;  
+            lancamentoEntidade.Codigo = lancamento.Tipo.ToString();  
             lancamentoEntidade.Tipo = lancamento.Tipo;  
 
             _context.Add(lancamentoEntidade);
@@ -48,7 +48,19 @@ namespace PlanoContas.Infraestructure.Repositorios
 
         public bool InserirSubLancamento(SubLancamentoDTO lancamento)
         {
-            throw new NotImplementedException();
+            LancamentoEntidade lancamentoEntidade = new LancamentoEntidade();
+            lancamentoEntidade.Descricao = lancamento.Descricao;
+            lancamentoEntidade.AceitaLancamentos = lancamento.AceitaLancamentos;
+            lancamentoEntidade.Codigo = lancamento.Tipo.ToString();
+            lancamentoEntidade.Tipo = lancamento.Tipo;
+            lancamentoEntidade.IdPai = lancamento.IdContaPai;
+
+            _context.Add(lancamentoEntidade);
+
+            _context.SaveChanges();
+
+            return true;
+
         }
     }
 }

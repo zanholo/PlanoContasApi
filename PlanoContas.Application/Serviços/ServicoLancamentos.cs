@@ -23,6 +23,17 @@ namespace PlanoContas.Application.Serviços
             _lancamentoRepositorio = serviceProvider.GetRequiredService<ILancamentoRepositorio>();
         }
 
+        public string buscarProximoSequencial(int id)
+        {
+            var consultaLancamentos = _lancamentoRepositorio.ConsultarLancamentos(id);
+
+            if (consultaLancamentos.Count() == 0)
+                return "";
+            var lancamentoMaior = consultaLancamentos.OrderByDescending(x => x.Codigo).First();
+                        
+            return proximoSequencial(lancamentoMaior.Codigo.ToString());            
+        }
+
         public bool inserirLancamento(LancamentoDTO lancamento)
         {
             _lancamentoRepositorio.InserirLancamento(lancamento);
@@ -55,6 +66,34 @@ namespace PlanoContas.Application.Serviços
             }
 
             return listaLancamentoDto;
+        }
+
+
+        /* Tratamentos */
+
+        private string proximoSequencial(string sequencial)
+        {
+
+            int freqPontoAparecendo = sequencial.Count(f => (f == '.'));
+
+            switch (freqPontoAparecendo)
+            {
+                case 0:
+                    //valor atual sendo apenas 1
+                    //proximo sequencial 1.1
+                    return "1.1";
+                    break;
+                case 1:
+                    //valor atual sendo tipo 1.1
+                    //proximo sequencial 1.2
+                    break;
+                case 2:
+                    //valor atual sendo tipo 1.1.1
+                    //proximo sequencial 1.1.1
+                    break;
+            }            
+
+            return "";
         }
     }
 }

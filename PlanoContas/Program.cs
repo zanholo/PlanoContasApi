@@ -24,8 +24,7 @@ builder.Services.AddScoped<IServicoTipo, ServicoTipo>();
 builder.Services.AddScoped<ITipoRepositorio, TipoRepositorio>();
 
 
-
-///Conexão com banco
+//Criação do banco em memoria
 builder.Services.AddDbContext<LancamentoContexto>(opt => opt.UseInMemoryDatabase("Lancamentos"));
 builder.Services.AddDbContext<TipoContexto>(opt => opt.UseInMemoryDatabase("Tipo"));
 
@@ -37,8 +36,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
-
 
 app.UseHttpsRedirection();
 
