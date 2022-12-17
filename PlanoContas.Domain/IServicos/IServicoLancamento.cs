@@ -12,5 +12,7 @@ namespace PlanoContas.Domain.IServicos
         public List<LancamentoDTO> listarLancamentos();
 
         public bool inserirLancamento(LancamentoDTO lancamento);
+        public bool inserirsubLancamento(SubLancamentoDTO lancamento);
+        
     }
 }

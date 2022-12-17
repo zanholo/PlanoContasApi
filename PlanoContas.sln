@@ -11,8 +11,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlanoContas.Domain", "Plano
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlanoContas.Infraestructure", "PlanoContas.Infraestructure\PlanoContas.Infraestructure.csproj", "{BC514D0D-6948-4BCA-A8F4-183BCEC26C87}"
 EndProject
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "DbasePlanoContas", "DbasePlanoContas\DbasePlanoContas.sqlproj", "{D3580A9B-E065-4A03-9298-CCC2603BD4CC}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,12 +33,6 @@ Global
 		{BC514D0D-6948-4BCA-A8F4-183BCEC26C87}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BC514D0D-6948-4BCA-A8F4-183BCEC26C87}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BC514D0D-6948-4BCA-A8F4-183BCEC26C87}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D3580A9B-E065-4A03-9298-CCC2603BD4CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D3580A9B-E065-4A03-9298-CCC2603BD4CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D3580A9B-E065-4A03-9298-CCC2603BD4CC}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{D3580A9B-E065-4A03-9298-CCC2603BD4CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D3580A9B-E065-4A03-9298-CCC2603BD4CC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D3580A9B-E065-4A03-9298-CCC2603BD4CC}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -15,12 +15,19 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+//Injeção
 builder.Services.AddScoped<IServicoLancamento, ServicoLancamentos>();
 builder.Services.AddScoped<ILancamentoRepositorio, LancamentoRepositorio>();
 
 
+builder.Services.AddScoped<IServicoTipo, ServicoTipo>();
+builder.Services.AddScoped<ITipoRepositorio, TipoRepositorio>();
+
+
+
 ///Conexão com banco
 builder.Services.AddDbContext<LancamentoContexto>(opt => opt.UseInMemoryDatabase("Lancamentos"));
+builder.Services.AddDbContext<TipoContexto>(opt => opt.UseInMemoryDatabase("Tipo"));
 
 var app = builder.Build();
 

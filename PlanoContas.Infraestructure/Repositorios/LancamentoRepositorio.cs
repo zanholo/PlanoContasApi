@@ -36,7 +36,7 @@ namespace PlanoContas.Infraestructure.Repositorios
             LancamentoEntidade lancamentoEntidade = new LancamentoEntidade();
             lancamentoEntidade.Descricao = lancamento.Descricao;
             lancamentoEntidade.AceitaLancamentos = lancamento.AceitaLancamentos;
-            lancamentoEntidade.Codigo = lancamento.Codigo;  
+            //lancamentoEntidade.Codigo = lancamento.Codigo;  
             lancamentoEntidade.Tipo = lancamento.Tipo;  
 
             _context.Add(lancamentoEntidade);

@@ -29,6 +29,12 @@ namespace PlanoContas.Application.Serviços
             return true;
         }
 
+        public bool inserirsubLancamento(SubLancamentoDTO lancamento)
+        {
+            _lancamentoRepositorio.InserirSubLancamento(lancamento);
+            return true;
+        }
+
         public List<LancamentoDTO> listarLancamentos()
         {
             var consultaLancamentos = _lancamentoRepositorio.ConsultarLancamentos(0);
@@ -39,10 +45,11 @@ namespace PlanoContas.Application.Serviços
             {
                 LancamentoDTO lancamentoDTO = new LancamentoDTO();
 
+                lancamentoDTO.Id = lancamento.Id;
                 lancamentoDTO.AceitaLancamentos = lancamento.AceitaLancamentos;
                 lancamentoDTO.Descricao = lancamento.Descricao;
                 lancamentoDTO.Tipo = lancamento.Tipo;
-                lancamentoDTO.Codigo = lancamento.Codigo;
+                //lancamentoDTO.Codigo = lancamento.Codigo;
 
                 listaLancamentoDto.Add(lancamentoDTO);
             }
