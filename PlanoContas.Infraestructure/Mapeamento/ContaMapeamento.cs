@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace PlanoContas.Infraestructure.Mapeamento
 {
-    public class LancamentoMapeamento : IEntityTypeConfiguration<LancamentoEntidade>
+    public class ContaMapeamento : IEntityTypeConfiguration<ContaEntidade>
     {
-        public void Configure(EntityTypeBuilder<LancamentoEntidade> builder)
+        public void Configure(EntityTypeBuilder<ContaEntidade> builder)
         {
             
         }

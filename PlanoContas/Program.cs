@@ -16,8 +16,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 //Injeção
-builder.Services.AddScoped<IServicoLancamento, ServicoLancamentos>();
-builder.Services.AddScoped<ILancamentoRepositorio, LancamentoRepositorio>();
+builder.Services.AddScoped<IServicoConta, ServicoConta>();
+builder.Services.AddScoped<IContaRepositorio, ContaRepositorio>();
 
 
 builder.Services.AddScoped<IServicoTipo, ServicoTipo>();
@@ -25,7 +25,7 @@ builder.Services.AddScoped<ITipoRepositorio, TipoRepositorio>();
 
 
 //Criação do banco em memoria
-builder.Services.AddDbContext<LancamentoContexto>(opt => opt.UseInMemoryDatabase("Lancamentos"));
+builder.Services.AddDbContext<ContaContexto>(opt => opt.UseInMemoryDatabase("Conta"));
 builder.Services.AddDbContext<TipoContexto>(opt => opt.UseInMemoryDatabase("Tipo"));
 
 var app = builder.Build();

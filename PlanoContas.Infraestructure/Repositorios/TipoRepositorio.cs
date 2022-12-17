@@ -30,14 +30,14 @@ namespace PlanoContas.Infraestructure.Repositorios
 
         public List<TipoEntidade> ConsultarTipo(int id)
         {
-            var listLancamentos = new List<TipoEntidade>();
+            var listConta = new List<TipoEntidade>();
 
             if (id == 0)
-                listLancamentos = _context.TodosTipos.ToList();
+                listConta = _context.TodosTipos.ToList();
             //else
             //listLancamentos = _context.Find(  id).ToList();
 
-            return listLancamentos;
+            return listConta;
         }
 }
 }

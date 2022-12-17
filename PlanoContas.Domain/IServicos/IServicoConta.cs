@@ -7,14 +7,12 @@ using System.Threading.Tasks;
 
 namespace PlanoContas.Domain.IServicos
 {
-    public interface IServicoLancamento
+    public interface IServicoConta
     {
-        public List<LancamentoDTO> listarLancamentos();
-
+        public List<ContaPaiFilhoDTO> listarContas();
         public string buscarProximoSequencial(int id);       
-
-        public bool inserirLancamento(LancamentoDTO lancamento);
-        public bool inserirsubLancamento(SubLancamentoDTO lancamento);
+        public bool inserirConta(ContaDTO lancamento);
+        public bool InserirSubConta(ContaSubDTO lancamento);
         
     }
 }

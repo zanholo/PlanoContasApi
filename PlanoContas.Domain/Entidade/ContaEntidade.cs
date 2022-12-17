@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PlanoContas.Domain.Entidade
 {
-    public  class LancamentoEntidade
+    public  class ContaEntidade
     {
         public int Id { get; set; }
         public string? Descricao { get; set; }

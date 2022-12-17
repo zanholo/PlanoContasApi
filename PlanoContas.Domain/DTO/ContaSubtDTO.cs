@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace PlanoContas.Domain.DTO
 {
-    public class SubLancamentoInputDTO
+    public class ContaSubInputDTO
     {
         /// <summary>
-        /// Descrição do Lancamento
+        /// Descrição da Conta
         /// </summary>
         public string? Descricao { get; set; }
 
@@ -24,7 +24,7 @@ namespace PlanoContas.Domain.DTO
         public int IdContaPai { get; set; }
 
         /// <summary>
-        /// Aceita SubLancamentos
+        /// Codigo da Conta
         /// </summary>
         public string Codigo { get; set; }
 
@@ -34,12 +34,12 @@ namespace PlanoContas.Domain.DTO
         public bool AceitaLancamentos { get; set; }
     }
 
-    public class SubLancamentoDTO
+    public class ContaSubDTO
     {
 
         public int Id { get; set; }
         /// <summary>
-        /// Descrição do Lancamento
+        /// Descrição da Conta
         /// </summary>
         public string? Descricao { get; set; }
 

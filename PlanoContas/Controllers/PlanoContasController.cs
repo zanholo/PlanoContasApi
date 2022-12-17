@@ -11,7 +11,7 @@ namespace PlanoContas.Controllers
     {
         private readonly ILogger<PlanoContasController> _logger;
         
-        public PlanoContasController(ILogger<PlanoContasController> logger, IServicoLancamento _lancamentos)
+        public PlanoContasController(ILogger<PlanoContasController> logger, IServicoConta _conta)
         {
             _logger = logger;
         }
