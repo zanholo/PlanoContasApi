@@ -11,7 +11,7 @@ namespace PlanoContas.Domain.IServicos
     {
         public List<LancamentoDTO> listarLancamentos();
 
-        public string buscarProximoSequencial(int id);
+        public string buscarProximoSequencial(int id);       
 
         public bool inserirLancamento(LancamentoDTO lancamento);
         public bool inserirsubLancamento(SubLancamentoDTO lancamento);

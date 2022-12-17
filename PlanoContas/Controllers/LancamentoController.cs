@@ -45,9 +45,10 @@ namespace PlanoContas.Controllers
 
             var result = lancamentos.inserirLancamento(lancamentoDTO);
 
-            var lista = new List<string>();
+            if(result)
+                return Ok("Inclusão com sucesso.");
+            return BadRequest("Já existe um lancamento para este tipo");
 
-            return Ok("Inclusão com sucesso.");
         }
 
         /**
@@ -85,5 +86,6 @@ namespace PlanoContas.Controllers
 
             return Ok(result);
         }
+        
     }
 }

@@ -23,6 +23,11 @@ namespace PlanoContas.Application.Serviços
             _lancamentoRepositorio = serviceProvider.GetRequiredService<ILancamentoRepositorio>();
         }
 
+        /// <summary>
+        /// Busca o proximo Sequencial
+        /// </summary>
+        /// <param name="id">Id do Tipo</param>
+        /// <returns>String contendo o proximo sequencial desse tipo </returns>
         public string buscarProximoSequencial(int id)
         {
             var consultaLancamentos = _lancamentoRepositorio.ConsultarLancamentos(id);
@@ -34,18 +39,10 @@ namespace PlanoContas.Application.Serviços
             return proximoSequencial(lancamentoMaior.Codigo.ToString());            
         }
 
-        public bool inserirLancamento(LancamentoDTO lancamento)
-        {
-            _lancamentoRepositorio.InserirLancamento(lancamento);
-            return true;
-        }
-
-        public bool inserirsubLancamento(SubLancamentoDTO lancamento)
-        {
-            _lancamentoRepositorio.InserirSubLancamento(lancamento);
-            return true;
-        }
-
+        /// <summary>
+        /// Trazer todos os Lancamentos Gravados
+        /// </summary>
+        /// <returns>Um List de LancamentoDTO contendo todos os lancamentos</returns>
         public List<LancamentoDTO> listarLancamentos()
         {
             var consultaLancamentos = _lancamentoRepositorio.ConsultarLancamentos(0);
@@ -68,8 +65,35 @@ namespace PlanoContas.Application.Serviços
             return listaLancamentoDto;
         }
 
+        /// <summary>
+        /// Insere um lancamento Pai, Conta
+        /// </summary>
+        /// <param name="lancamento"></param>
+        /// <returns>True, caso inserido com sucesso, false caso ja exista um configurado</returns>
+        public bool inserirLancamento(LancamentoDTO lancamento)
+        {
+            if(validaLancamentoMesmoTipo(lancamento.Tipo)) 
+                return false;
 
-        /* Tratamentos */
+            _lancamentoRepositorio.InserirLancamento(lancamento);
+            return true;
+        }
+
+        /// <summary>
+        /// Insere um Lancamento filho, Conta
+        /// </summary>
+        /// <param name="lancamento"></param>
+        /// <returns></returns>
+        public bool inserirsubLancamento(SubLancamentoDTO lancamento)
+        {
+            _lancamentoRepositorio.InserirSubLancamento(lancamento);
+            return true;
+        }
+
+        
+
+        
+        /* Tratamentos do Sistema*/
 
         private string proximoSequencial(string sequencial)
         {
@@ -94,6 +118,13 @@ namespace PlanoContas.Application.Serviços
             }            
 
             return "";
+        }
+
+        public bool validaLancamentoMesmoTipo(int id)
+        {
+            var consultaLancamentos = _lancamentoRepositorio.ConsultarLancamentos(id);
+
+            return consultaLancamentos.Any() ? true : false;
         }
     }
 }
