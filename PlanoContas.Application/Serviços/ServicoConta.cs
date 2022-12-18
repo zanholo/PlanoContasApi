@@ -123,6 +123,11 @@ namespace PlanoContas.Application.Serviços
             if (!result.Any())
                 throw new Exception("Pai não encontrado");
 
+            //Conta que aceita lancamentos não pode ter filhos
+            if (result.First().AceitaLancamentos)
+                throw new Exception("Conta que aceita lancamentos não pode ter filhos.");
+
+
             //Tipo do Pai diferente do que enviado no Payload
             if (result.First().Tipo != subConta.Tipo)
                 throw new Exception(@"O tipo do pai é diferente do enviado." + @"\n Pai: " + result.First().Tipo + ", Enviado:" + subConta.Tipo);
