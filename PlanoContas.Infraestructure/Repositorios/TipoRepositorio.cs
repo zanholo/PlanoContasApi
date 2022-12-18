@@ -34,8 +34,8 @@ namespace PlanoContas.Infraestructure.Repositorios
 
             if (id == 0)
                 listConta = _context.TodosTipos.ToList();
-            //else
-            //listLancamentos = _context.Find(  id).ToList();
+            else
+                listConta = _context.TodosTipos.Where(x => x.Id == id).ToList();
 
             return listConta;
         }

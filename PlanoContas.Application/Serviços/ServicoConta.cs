@@ -15,12 +15,14 @@ namespace PlanoContas.Application.Serviços
     {
         private readonly IServiceProvider _serviceProvider;
         private IContaRepositorio _contaRepositorio;
+        private ITipoRepositorio _tipoRepositorio;
 
 
         public ServicoConta(IServiceProvider serviceProvider)
         {
             _serviceProvider = serviceProvider;
             _contaRepositorio = serviceProvider.GetRequiredService<IContaRepositorio>();
+            _tipoRepositorio = serviceProvider.GetRequiredService<ITipoRepositorio>();
         }
 
         /// <summary>
@@ -46,6 +48,7 @@ namespace PlanoContas.Application.Serviços
         public List<ContaPaiFilhoDTO> listarContas()
         {
             var consultaContas = _contaRepositorio.ConsultarContas(0);
+            var listTipo = _tipoRepositorio.ConsultarTipo(0);
 
             var listContasPaisConfigurados = consultaContas.Where(x => x.IdPai == 0).ToList();
 
@@ -93,8 +96,9 @@ namespace PlanoContas.Application.Serviços
         /// <returns>True, caso inserido com sucesso, false caso ja exista um configurado</returns>
         public bool inserirConta(ContaDTO conta)
         {
-            if(validaContaMesmoTipo(conta.Tipo)) 
-                return false;
+            validaContaMesmoTipo(conta.Tipo);
+
+            validaExistenciaTipo(conta.Tipo);
 
             _contaRepositorio.InserirConta(conta);
             return true;
@@ -171,11 +175,22 @@ namespace PlanoContas.Application.Serviços
 
             return "";
         }
-        public bool validaContaMesmoTipo(int id)
+        private bool validaContaMesmoTipo(int id)
         {
             var consultaContas = _contaRepositorio.ConsultarContas(id);
 
-            return consultaContas.Any() ? true : false;
+            if(consultaContas.Any())
+                throw new Exception("Ja existe conta Configurada com este Tipo");
+
+            return true;
+        }
+        private bool validaExistenciaTipo(int id)
+        {
+            var tipo = _tipoRepositorio.ConsultarTipo(id);
+
+            if (!tipo.Any())
+                throw new Exception("Não existe esse tipo Cadastrado");
+            return true;
         }
     }
 }

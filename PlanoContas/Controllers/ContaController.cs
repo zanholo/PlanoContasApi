@@ -38,16 +38,23 @@ namespace PlanoContas.Controllers
         [HttpPost]
         public ActionResult<List<string>> CadastrarConta(ContaInputDTO contaimputDTO)
         {
-            ContaDTO contaDTO = new ContaDTO();
-            contaDTO.Descricao = contaimputDTO.Descricao;
-            contaDTO.AceitaLancamentos = contaimputDTO.AceitaLancamentos;
-            contaDTO.Tipo = contaimputDTO.Tipo;
+            try
+            {
+                ContaDTO contaDTO = new ContaDTO();
+                contaDTO.Descricao = contaimputDTO.Descricao;
+                contaDTO.AceitaLancamentos = contaimputDTO.AceitaLancamentos;
+                contaDTO.Tipo = contaimputDTO.Tipo;
 
-            var result = conta.inserirConta(contaDTO);
-
-            if(result)
+                var result = conta.inserirConta(contaDTO);
+                
                 return Ok("Inclusão com sucesso.");
-            return BadRequest("Já existe uma Conta para este tipo");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            
+            
 
         }
 
