@@ -32,3 +32,16 @@ Payload Ex:
 }
 
 3 - Para cadastrar qualquer sublancamento para cada antes é interessante fazer o fluxo de buscar o proximoCodigo, pelo endpoint "RetornarProximoCodigo", para poder inserir um valido.
+
+4 - Para inserir um sublancamento, que seria uma conta filha, usar o cadastrar "CadastrarSubLancamento".
+Ex:
+
+{
+  "descricao": "Taxa Condominial",
+  "tipo": 1,
+  "idContaPai": 1,
+  "codigo": "1.1",
+  "aceitaLancamentos": true
+}
+
+
