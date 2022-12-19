@@ -26,7 +26,7 @@ namespace PlanoContas.Infraestructure.Repositorios
             if (id == 0)
                 listContas = _context.TodasContas.OrderBy(x => x.Codigo).ToList();
             else
-                listContas = _context.TodasContas.Where(x => x.Id == id).OrderBy(x => x.Codigo).ToList();
+                listContas = _context.TodasContas.Where(x => x.Tipo == id).OrderBy(x => Convert.ToDecimal(x.Codigo)).ToList();
 
             return listContas;
         }
