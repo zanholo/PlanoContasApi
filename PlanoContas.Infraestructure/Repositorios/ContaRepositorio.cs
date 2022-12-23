@@ -24,9 +24,9 @@ namespace PlanoContas.Infraestructure.Repositorios
             var listContas = new List<ContaEntidade>();
 
             if (id == 0)
-                listContas = _context.TodasContas.OrderBy(x => x.Codigo).ToList();
+                listContas = _context.TodasContas.Where(x => x.Ativo).OrderBy(x => x.Codigo).ToList();
             else
-                listContas = _context.TodasContas.Where(x => x.Tipo == id).OrderBy(x => Convert.ToDecimal(x.Codigo)).ToList();
+                listContas = _context.TodasContas.Where(x => x.Tipo == id && x.Ativo).OrderBy(x => Convert.ToDecimal(x.Codigo)).ToList();
 
             return listContas;
         }
@@ -37,10 +37,26 @@ namespace PlanoContas.Infraestructure.Repositorios
             contaEntidade.Descricao = conta.Descricao;
             contaEntidade.AceitaLancamentos = conta.AceitaLancamentos;
             contaEntidade.Codigo = conta.Tipo.ToString();  
-            contaEntidade.Tipo = conta.Tipo;  
+            contaEntidade.Tipo = conta.Tipo;
+            contaEntidade.Ativo = true; 
 
             _context.Add(contaEntidade);
 
+            _context.SaveChanges();
+
+            return true;
+        }
+
+        public bool UpdateConta(ContaDTO conta)
+        {
+            ContaEntidade contaEntidade = new ContaEntidade();
+            contaEntidade.Descricao = conta.Descricao;
+            contaEntidade.AceitaLancamentos = conta.AceitaLancamentos;
+            contaEntidade.Codigo = conta.Tipo.ToString();
+            contaEntidade.Tipo = conta.Tipo;
+            contaEntidade.Ativo = conta.Ativo;
+
+            _context.Update(contaEntidade);
             _context.SaveChanges();
 
             return true;

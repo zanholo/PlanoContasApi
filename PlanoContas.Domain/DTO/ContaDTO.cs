@@ -19,6 +19,7 @@ namespace PlanoContas.Domain.DTO
         public string? Descricao { get; set; }
         public Int16 Tipo { get; set; }
         public bool AceitaLancamentos { get; set; }
+        public bool Ativo { get; set; }
     }
 
 
@@ -30,6 +31,7 @@ namespace PlanoContas.Domain.DTO
         public Int16 Tipo { get; set; }
         public bool AceitaLancamentos { get; set; }
         public string Codigo { get; set; }
+        public bool Ativo { get; set; }
         public int IdPai { get; set; }
         public List<ContaPaiFilhoDTO> listContaFilho { get; set; }
     }

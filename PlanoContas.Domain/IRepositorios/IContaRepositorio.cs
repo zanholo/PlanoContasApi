@@ -15,5 +15,7 @@ namespace PlanoContas.Domain.IRepositorios
         public bool InserirConta(ContaDTO lancamento);
 
         public bool InserirSubConta(ContaSubDTO lancamento);
+
+        public bool UpdateConta(ContaEntidade conta);
     }
 }

@@ -84,6 +84,31 @@ namespace PlanoContas.Controllers
             
         }
 
+        /**
+        * Excluir Conta
+        */
+        [Route("ExcluirConta")]
+        [HttpPost]
+        public ActionResult<List<string>> ExcluirConta(int id)
+        {
+            try
+            {
+                ContaDTO contaDTO = new ContaDTO();
+                contaDTO.Id = id;
+
+                var result = conta.listarContas(contaDTO);
+
+                return Ok("Inclusão com sucesso.");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+
+
+        }
+
 
         /**
          * Retornar Proximo Codigo disponível para a Conta

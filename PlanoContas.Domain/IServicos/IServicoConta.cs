@@ -13,6 +13,8 @@ namespace PlanoContas.Domain.IServicos
         public string buscarProximoSequencial(int id);       
         public bool inserirConta(ContaDTO lancamento);
         public bool InserirSubConta(ContaSubDTO lancamento);
-        
+        public bool excluirConta(int id);
+
+
     }
 }

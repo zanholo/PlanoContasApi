@@ -90,6 +90,21 @@ namespace PlanoContas.Application.Serviços
         }
 
         /// <summary>
+        /// Excluir uma conta logicamente
+        /// </summary>
+        /// <returns>Excluir uma conta logicamente</returns>
+        public bool excluirConta(int id)
+        {
+            var consultaContas = _contaRepositorio.ConsultarContas(id);
+
+            consultaContas.First().Ativo = true;
+
+            _contaRepositorio.UpdateConta(consultaContas.First());
+
+            return true;
+        }
+
+        /// <summary>
         /// Insere uma Conta Pai
         /// </summary>
         /// <param name="conta"></param>
