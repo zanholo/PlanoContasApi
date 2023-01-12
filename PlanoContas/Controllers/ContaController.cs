@@ -96,7 +96,7 @@ namespace PlanoContas.Controllers
                 ContaDTO contaDTO = new ContaDTO();
                 contaDTO.Id = id;
 
-                var result = conta.listarContas(contaDTO);
+                var result = conta.listarContas();
 
                 return Ok("Inclusão com sucesso.");
             }

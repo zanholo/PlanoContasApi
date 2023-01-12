@@ -78,5 +78,10 @@ namespace PlanoContas.Infraestructure.Repositorios
             return true;
 
         }
+
+        public bool UpdateConta(ContaEntidade conta)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
